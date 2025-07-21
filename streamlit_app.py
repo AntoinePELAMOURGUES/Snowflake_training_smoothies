@@ -14,9 +14,7 @@ name_on_order = st.text_input("Name on Smoothie :")
 st.write("The name on your Smoothies will be :", name_on_order)
 
 # Section to display smothiefroot nutrition information
-smoothiefroot_response = requests.get(
-    "https://my.smoothiefroot.com/api/fruit/watermelon"
-)
+smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 st.text(smoothiefroot_response)
 
 cnx = st.connection("snowflake")
