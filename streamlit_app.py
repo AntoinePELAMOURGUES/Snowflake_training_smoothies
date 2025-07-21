@@ -13,11 +13,6 @@ st.write(
 name_on_order = st.text_input("Name on Smoothie :")
 st.write("The name on your Smoothies will be :", name_on_order)
 
-# Section to display smothiefroot nutrition information
-smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-# st.text(smoothiefroot_response.json())
-sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-
 cnx = st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col("FRUIT_NAME"))
@@ -33,6 +28,13 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + " "
+        # Section to display smothiefroot nutrition information
+        smoothiefroot_response = requests.get(
+            "https://fruityvice.com/api/fruit/watermelon"
+        )
+        sf_df = st.dataframe(
+            data=smoothiefroot_response.json(), use_container_width=True
+        )
 
     # st.write(ingredients_string)
 
