@@ -30,7 +30,7 @@ if ingredients_list:
         ingredients_string += fruit_chosen + " "
         # Section to display smothiefroot nutrition information
         smoothiefroot_response = requests.get(
-            "https://fruityvice.com/api/fruit/watermelon"
+            f"https://fruityvice.com/api/fruit/{fruit_chosen.lower()}"  # API call to get fruit info
         )
         sf_df = st.dataframe(
             data=smoothiefroot_response.json(), use_container_width=True
